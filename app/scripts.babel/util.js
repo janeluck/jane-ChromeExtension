@@ -16,3 +16,22 @@ function errorHandler(e) {
         msg = e.toString();
     showMessage('Error: ' + msg);
 }
+
+
+
+// show message when user interactive
+var timeoutID;
+function showMessage(msg, good) {
+    console.log(msg);
+    var messageElement = document.querySelector("#message");
+    messageElement.style.color = good ? "green" : "red";
+    messageElement.innerHTML = msg;
+    if (timeoutID)
+        clearTimeout(timeoutID);
+    timeoutID = setTimeout(
+        function () {
+            messageElement.innerHTML = "&nbsp;";
+        },
+        5000
+    );
+}
